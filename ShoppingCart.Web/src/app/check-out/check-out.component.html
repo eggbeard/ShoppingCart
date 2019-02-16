@@ -1,0 +1,3 @@
+<h2>Please enter your payment details</h2>
+<app-payment-info-form (changed)="setPaymentInfo($event)"></app-payment-info-form>
+<app-address *ngIf="paymentInfo" (changed)="setAddress($event)"></app-address>

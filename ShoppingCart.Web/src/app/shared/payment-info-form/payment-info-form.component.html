@@ -1,0 +1,33 @@
+<div class="col-md-4 col-md-offset-4">
+  <form [formGroup]="paymentInfoForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+
+    <h3>Payment Info</h3>
+    <div class="form-group">
+      <label>Card Number:</label>
+      <input class="form-control" type="number" formControlName="cardNumber">
+      <p *ngIf="cardNumber.invalid && !cardNumber.pristine">Card Number is required.</p>
+    </div>
+
+    <div class="form-group">
+      <label> Expiry Year: </label>
+      <input class="form-control" type="number" formControlName="year">
+      <p *ngIf="year.invalid && !year.pristine">Year is required.</p>
+    </div>
+
+    <div class="form-group">
+      <label>Expiry Month:</label>
+      <input class="form-control" type="number" formControlName="month">
+      <p *ngIf="month.invalid && !month.pristine">Month is required.</p>
+    </div>
+
+    <div class="form-group">
+      <label>CCV:</label>
+      <input class="form-control" type="number" formControlName="ccv">
+      <p *ngIf="ccv.invalid && !ccv.pristine">CCV is required.</p>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" [disabled]="!paymentInfoForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

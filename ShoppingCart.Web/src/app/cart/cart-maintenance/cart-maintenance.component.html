@@ -1,0 +1,29 @@
+<h4>Your Cart contains <span *ngIf="cartCount !=0">the following</span> {{ cartCount }} items</h4>
+<div class='card'>
+  <div class='table-responsive'>
+    <table class='table' *ngIf='cartItems && cartItems.length'>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let item of cartItems'>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.product.price | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>
+            <a (click)="removeOne(item.product)"><i class="fa fa-minus-circle"></i></a>
+            <!-- Slightly more convoluted than ngModel, but allows easy event dispatch -->
+            <input type='number'
+                   value = {{item.quantity}} 
+                   (change) = "setProductQuantity($event, item.product)"/>
+            <a (click)="addOne(item.product)"><i class="fa fa-plus-circle"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div>Your Cart Total is {{ cartTotal | currency:'USD':'symbol':'1.2-2' }}</div>
