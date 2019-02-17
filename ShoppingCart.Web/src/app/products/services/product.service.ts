@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { Product } from '../product';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -10,16 +10,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
+  //TODO: Get this from Config
   private productsUrl = 'https://localhost:5001/api/products';
-  //private products: Product[];
-
+  
   getProducts(): Observable<Product[]> {
-    // if (this.products) {
-    //   return of(this.products);
-    // }
     return this.http.get<Product[]>(this.productsUrl)
       .pipe(
-        /*tap(data => this.products = data),*/
         catchError(this.handleError)
       );
   }

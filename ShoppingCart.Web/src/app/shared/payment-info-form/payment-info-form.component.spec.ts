@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentInfoFormComponent } from './payment-info-form.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('PaymentInfoFormComponent', () => {
   let component: PaymentInfoFormComponent;
@@ -8,6 +9,7 @@ describe('PaymentInfoFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, FormsModule],
       declarations: [ PaymentInfoFormComponent ]
     })
     .compileComponents();
