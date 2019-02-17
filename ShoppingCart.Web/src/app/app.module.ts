@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -21,6 +21,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { OrderSummaryComponent } from './order/order-summary/order-summary.component';
 
+import { localStorageSync } from 'ngrx-store-localstorage';
+
+const storageConfig = {
+  rehydrate : true,
+  keys: ['entities', 'cart', 'order']
+}
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync(storageConfig)(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +50,10 @@ import { OrderSummaryComponent } from './order/order-summary/order-summary.compo
     CartModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(reducers, 
+    StoreModule.forRoot(
+      reducers, 
       { 
+        metaReducers: metaReducers,
         initialState: getInitialState 
       }
     ),
