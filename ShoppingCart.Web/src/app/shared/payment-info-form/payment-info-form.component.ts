@@ -8,7 +8,7 @@ import { PaymentInfo } from './PaymentInfo';
   styleUrls: ['./payment-info-form.component.scss']
 })
 
-/* We could add a lot more here in terms of Credit card format validation 
+/* We could add a lot more here in terms of Credit card format validation
   CCV validation.  Output formatting etc.
 */
 
@@ -29,12 +29,12 @@ export class PaymentInfoFormComponent implements OnInit {
       year: new FormControl('', Validators.required),
       month: new FormControl('', Validators.required),
       ccv: new FormControl('', Validators.required)
-    }); 
+    });
   }
 
   onSubmit() {
     const {cardNumber, year, month, ccv} = this.paymentInfoForm.value;
-    const paymentInfo : PaymentInfo = {cardNumber, year, month, ccv};
+    const paymentInfo: PaymentInfo = {cardNumber, year, month, ccv};
     this.changed.emit(paymentInfo);
   }
 

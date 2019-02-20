@@ -18,6 +18,6 @@ export class ApiRequestError implements Action {
   constructor(public error: HttpErrorResponse) {}
 }
 
-export type ApiActions = 
+export type ApiActions =
   ApiRequestSuccess |
   ApiRequestError;

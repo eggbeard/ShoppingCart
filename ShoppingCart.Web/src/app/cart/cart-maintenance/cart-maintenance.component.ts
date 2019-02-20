@@ -36,8 +36,8 @@ export class CartMaintenanceComponent implements OnInit {
     this.store.pipe(
       select(getCartTotalPrice)
     ).subscribe(
-      (total:number) => this.cartTotal = total
-    )
+      (total: number) => this.cartTotal = total
+    );
   }
 
   addOne(product: Product): void {
@@ -48,7 +48,7 @@ export class CartMaintenanceComponent implements OnInit {
     this.store.dispatch(new RemoveOneProductFromCart(product.id));
   }
 
-  setProductQuantity(event: any, product: Product){
+  setProductQuantity(event: any, product: Product) {
     const quantity = Number(event.target.value);
     this.store.dispatch(new SetProductQuantity(product.id, quantity));
   }

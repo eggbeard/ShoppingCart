@@ -1,5 +1,5 @@
-import { CartActionType, CartActions } from "./cart.actions";
-import { CartState } from "./cart.store";
+import { CartActionType, CartActions } from './cart.actions';
+import { CartState } from './cart.store';
 
 export function reducer(state: CartState, action: CartActions): CartState {
   switch (action.type) {
@@ -21,8 +21,9 @@ export function reducer(state: CartState, action: CartActions): CartState {
       let quantity = state.products[action.productId] ? state.products[action.productId] : 0;
       quantity--;
 
-      if (quantity < 0)
+      if (quantity < 0) {
         quantity = 0;
+      }
 
       return {
         ...state,

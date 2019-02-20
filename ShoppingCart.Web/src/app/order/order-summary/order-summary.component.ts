@@ -39,20 +39,19 @@ export class OrderSummaryComponent implements OnInit {
     this.store.pipe(
       select(getCartTotalPrice)
     ).subscribe(
-      (total:number) => this.cartTotal = total
-    )
+      (total: number) => this.cartTotal = total
+    );
 
     this.store.pipe(
       select(getPaymentInfo)
     ).subscribe(
-      (paymentInfo:PaymentInfo) => this.paymentInfo = paymentInfo
-    )
+      (paymentInfo: PaymentInfo) => this.paymentInfo = paymentInfo
+    );
 
     this.store.pipe(
       select(getBillingAddress)
     ).subscribe(
-      (address:Address) => this.billingAddress = address
-    )
+      (address: Address) => this.billingAddress = address
+    );
   }
-
 }

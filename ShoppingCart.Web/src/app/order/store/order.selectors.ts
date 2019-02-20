@@ -1,6 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { OrderState } from "./order.store";
- 
+import { OrderState } from './order.store';
+
 export const getOrderState = createFeatureSelector<OrderState>('order');
 
 export const getBillingAddress = createSelector(

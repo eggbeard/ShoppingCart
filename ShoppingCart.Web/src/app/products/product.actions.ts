@@ -7,7 +7,7 @@ export enum ProductActionType {
 export class LoadProducts implements Action {
   readonly type = ProductActionType.LOAD_PRODUCTS;
 
-  constructor() { };
+  constructor() { }
 }
 
 export type ProductActions =

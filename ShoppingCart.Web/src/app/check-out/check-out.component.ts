@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./check-out.component.scss']
 })
 export class CheckOutComponent implements OnInit {
-  
+
   paymentInfo: PaymentInfo;
   address: Address;
 
@@ -25,13 +25,13 @@ export class CheckOutComponent implements OnInit {
 
   }
 
-  setPaymentInfo(paymentInfo: PaymentInfo){
+  setPaymentInfo(paymentInfo: PaymentInfo) {
     this.paymentInfo = paymentInfo;
     this.store.dispatch(new SetPaymentInfo(paymentInfo));
   }
 
-  setAddress(address: Address){
+  setAddress(address: Address) {
     this.store.dispatch(new SetBillingAddress(address));
-    this.router.navigate(['/','order-summary']);
+    this.router.navigate(['/', 'order-summary']);
   }
 }

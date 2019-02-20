@@ -17,10 +17,10 @@ describe('ProductListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
-        StoreModule.forRoot({ 
+      imports: [
+        StoreModule.forRoot({
           entities: entities.reducers
-        }, 
+        },
         { initialState: INITIAL_STATE })
       ],
       declarations: [ ProductListComponent ]
@@ -48,12 +48,12 @@ describe('ProductListComponent', () => {
       component.ngOnInit();
 
       expect(store.dispatch).toHaveBeenCalledWith(expected);
-    })
+    });
 
     it('Should retrieve store products', () => {
-      const product1: Product = { id: 123, name:'', description:'', price:20 };
-      const product2: Product = { id: 3415, name:'', description:'', price:20.23 };
-      const product3: Product = { id: 7, name:'', description:'', price: 1.17 };
+      const product1: Product = { id: 123, name: '', description: '', price: 20 };
+      const product2: Product = { id: 3415, name: '', description: '', price: 20.23 };
+      const product3: Product = { id: 7, name: '', description: '', price: 1.17 };
       const products = [product1, product2, product3];
 
       store.dispatch(new AddManyProductEntities(products));
@@ -61,17 +61,17 @@ describe('ProductListComponent', () => {
       component.ngOnInit();
 
       expect(component.products).toEqual(products);
-    })
-  })
+    });
+  });
 
   describe('addToCart', () => {
     it('Should dispatch an AddProductToCart Action', () => {
-      const product: Product = { id: 345, name:'', description:'', price:20 }
+      const product: Product = { id: 345, name: '', description: '', price: 20 };
       const expected = new AddProductToCart(product.id);
 
       component.addToCart(product);
 
       expect(store.dispatch).toHaveBeenCalledWith(expected);
-    })
-  })
+    });
+  });
 });

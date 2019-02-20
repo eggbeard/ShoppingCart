@@ -10,9 +10,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
-  //TODO: Get this from Config
+  // TODO: Get this from Config
   private productsUrl = 'https://localhost:5001/api/products';
-  
+
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
       .pipe(

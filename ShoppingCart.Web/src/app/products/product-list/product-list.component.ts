@@ -12,7 +12,7 @@ import { AddProductToCart } from '../../cart/store/cart.actions';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  pageTitle: string = 'Doggie Products';
+  pageTitle = 'Doggie Products';
   errorMessage: string;
   products: Product[] = [];
 
@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit {
       select(getAllProducts)
     ).subscribe(
       (products: Product[]) => {
-        this.products = products
+        this.products = products;
       },
       (err: any) => this.errorMessage = err.error
     );

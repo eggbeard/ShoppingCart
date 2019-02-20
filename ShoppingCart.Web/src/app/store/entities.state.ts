@@ -18,6 +18,6 @@ export const reducers = combineReducers({
 
 export function entitiesReducers(state, action) {
   return reducers(state, action);
-};
+}
 
 export const getEntitiesState = createFeatureSelector<EntititesState>('entities');

@@ -14,11 +14,11 @@ describe('CartMaintenanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
-        StoreModule.forRoot({ 
+      imports: [
+        StoreModule.forRoot({
           entities: entities.reducers,
           cart: cart.reducer
-        }, 
+        },
         { initialState: INITIAL_STATE })
       ],
       declarations: [ CartMaintenanceComponent ]

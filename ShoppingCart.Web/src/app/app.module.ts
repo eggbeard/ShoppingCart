@@ -26,7 +26,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 const storageConfig = {
   rehydrate : true,
   keys: ['entities', 'cart', 'order']
-}
+};
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync(storageConfig)(reducer);
@@ -51,10 +51,10 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(
-      reducers, 
-      { 
-        metaReducers: metaReducers,
-        initialState: getInitialState 
+      reducers,
+      {
+        metaReducers,
+        initialState: getInitialState
       }
     ),
     EffectsModule.forRoot([ProductEffects]),

@@ -11,15 +11,15 @@ export class MockHttpClient extends HttpClient {
       return of(new HttpResponse<any>());
     }});
   }
-  get<T>(): Observable<T> { 
+  get<T>(): Observable<T> {
     return of({} as T);
   }
 
-  patch<T>(): Observable<T>{
+  patch<T>(): Observable<T> {
     return of({} as T);
   }
 
-  post<T>(): Observable<T> { 
+  post<T>(): Observable<T> {
     return of({} as T);
   }
 

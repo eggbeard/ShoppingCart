@@ -11,5 +11,5 @@ export class AddManyProductEntities implements Action {
   constructor(public products: Product[]) {}
 }
 
-export type ProductEntitiesActions = 
+export type ProductEntitiesActions =
   AddManyProductEntities;

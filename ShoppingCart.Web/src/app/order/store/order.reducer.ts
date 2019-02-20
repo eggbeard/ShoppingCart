@@ -1,5 +1,5 @@
-import { OrderActionType, OrderActions } from "./order.actions";
-import { OrderState } from "./order.store";
+import { OrderActionType, OrderActions } from './order.actions';
+import { OrderState } from './order.store';
 
 export function reducer(state: OrderState, action: OrderActions): OrderState {
   switch (action.type) {

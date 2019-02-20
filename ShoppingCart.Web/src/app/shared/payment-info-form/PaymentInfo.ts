@@ -1,4 +1,4 @@
-export interface PaymentInfo{
+export interface PaymentInfo {
   cardNumber: number;
   year: number;
   month: number;

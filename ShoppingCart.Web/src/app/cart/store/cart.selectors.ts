@@ -1,7 +1,7 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { CartState } from "./cart.store";
+import { CartState } from './cart.store';
 import { getProductEntities } from '../../products/entities/product-entity.selectors';
- 
+
 export const getCartState = createFeatureSelector<CartState>('cart');
 
 export const getCartProducts = createSelector(
@@ -9,11 +9,11 @@ export const getCartProducts = createSelector(
   getProductEntities,
   (cartState, products) => {
     return Object.entries(cartState.products).map(([productId, count]) => {
-      //console.log(`ProductId: ${productId} has a quantity of ${count}`);
+      // console.log(`ProductId: ${productId} has a quantity of ${count}`);
       return {
         product: products[productId],
         quantity: count
-      }
+      };
     });
   }
 );
@@ -23,7 +23,7 @@ export const getCartProductCount = createSelector(
   (cartState) =>  Object.entries(cartState.products)
       .map(([, count]) => count)
       .reduce((total, amount) => total + amount, 0)
-)
+);
 
 export const getCartTotalPrice = createSelector(
   getCartProducts,

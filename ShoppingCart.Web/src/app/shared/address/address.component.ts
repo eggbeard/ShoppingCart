@@ -29,7 +29,7 @@ export class AddressComponent implements OnInit {
 
   onSubmit() {
     const {street, city, state, zip} = this.addressForm.value;
-    const address : Address = {street, city, state, zip};
+    const address: Address = {street, city, state, zip};
     this.changed.emit(address);
   }
 

@@ -3,9 +3,9 @@ import { CartState } from '../cart/store/cart.store';
 import { OrderState } from '../order/store/order.store';
 
 export interface AppState {
-  entities: EntititesState,
-  cart: CartState,
-  order: OrderState
+  entities: EntititesState;
+  cart: CartState;
+  order: OrderState;
 }
 
 export const INITIAL_STATE: AppState = {
@@ -21,4 +21,4 @@ export const INITIAL_STATE: AppState = {
 
 export function getInitialState() {
   return INITIAL_STATE;
-};
+}
