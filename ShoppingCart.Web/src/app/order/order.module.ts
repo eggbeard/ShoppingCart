@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductListComponent } from './product-list/product-list.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
-    ProductListComponent
+    OrderSummaryComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class ProductsModule { }
+export class OrderModule { }

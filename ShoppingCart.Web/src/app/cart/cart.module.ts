@@ -4,7 +4,9 @@ import { CartMaintenanceComponent } from './cart-maintenance/cart-maintenance.co
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CartMaintenanceComponent],
+  declarations: [
+    CartMaintenanceComponent]
+  ,
   imports: [
     CommonModule,
     FormsModule
