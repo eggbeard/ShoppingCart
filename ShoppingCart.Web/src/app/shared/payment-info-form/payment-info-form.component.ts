@@ -1,16 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PaymentInfo } from './PaymentInfo';
+import { CreditCardValidator } from 'angular-cc-library';
 
 @Component({
   selector: 'app-payment-info-form',
   templateUrl: './payment-info-form.component.html',
   styleUrls: ['./payment-info-form.component.scss']
 })
-
-/* We could add a lot more here in terms of Credit card format validation
-  CCV validation.  Output formatting etc.
-*/
 
 export class PaymentInfoFormComponent implements OnInit {
   @Output() changed: EventEmitter<PaymentInfo> = new EventEmitter<PaymentInfo>();
@@ -19,22 +16,21 @@ export class PaymentInfoFormComponent implements OnInit {
   constructor() { }
 
   get cardNumber() { return this.paymentInfoForm.get('cardNumber'); }
-  get year() { return this.paymentInfoForm.get('year'); }
-  get month() { return this.paymentInfoForm.get('month'); }
-  get ccv() { return this.paymentInfoForm.get('ccv'); }
+  get expiration() { return this.paymentInfoForm.get('expiration'); }
+  get cvv() { return this.paymentInfoForm.get('cvv'); }
 
   ngOnInit() {
     this.paymentInfoForm = new FormGroup({
-      cardNumber: new FormControl('', Validators.required),
-      year: new FormControl('', Validators.required),
-      month: new FormControl('', Validators.required),
-      ccv: new FormControl('', Validators.required)
+      cardNumber: new FormControl('', [Validators.required, CreditCardValidator.validateCCNumber]),
+      expiration: new FormControl('', [Validators.required, CreditCardValidator.validateExpDate]),
+      cvv: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(4)])
     });
   }
 
   onSubmit() {
-    const {cardNumber, year, month, ccv} = this.paymentInfoForm.value;
-    const paymentInfo: PaymentInfo = {cardNumber, year, month, ccv};
+    const {cardNumber, expiration, cvv} = this.paymentInfoForm.value;
+    const paymentInfo: PaymentInfo = {cardNumber, expiration, cvv};
+    console.log(paymentInfo);
     this.changed.emit(paymentInfo);
   }
 

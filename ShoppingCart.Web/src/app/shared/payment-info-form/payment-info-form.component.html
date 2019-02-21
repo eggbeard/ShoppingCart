@@ -4,26 +4,31 @@
     <h3>Payment Info</h3>
     <div class="form-group">
       <label>Card Number:</label>
-      <input class="form-control" type="number" formControlName="cardNumber">
+      <input id="cc-number"
+             type="tel"
+             autocomplete="cc-number"
+             class="form-control"
+             formControlName="cardNumber"
+             ccNumber>
       <p *ngIf="cardNumber.invalid && !cardNumber.pristine">Card Number is required.</p>
     </div>
 
     <div class="form-group">
-      <label> Expiry Year: </label>
-      <input class="form-control" type="number" formControlName="year">
-      <p *ngIf="year.invalid && !year.pristine">Year is required.</p>
+      <label>Expiration Date:</label>
+      <input id="cc-exp-date"
+             type="tel"
+             autocomplete="cc-exp"
+             class="form-control"
+             formControlName="expiration"
+             placeholder="MM/YYYY"
+             ccExp>
+      <p *ngIf="expiration.invalid && !expiration.pristine">Expiration Date is required.</p>
     </div>
 
     <div class="form-group">
-      <label>Expiry Month:</label>
-      <input class="form-control" type="number" formControlName="month">
-      <p *ngIf="month.invalid && !month.pristine">Month is required.</p>
-    </div>
-
-    <div class="form-group">
-      <label>CCV:</label>
-      <input class="form-control" type="number" formControlName="ccv">
-      <p *ngIf="ccv.invalid && !ccv.pristine">CCV is required.</p>
+      <label>CVV:</label>
+      <input id="cc-cvc" type="tel" autocomplete="off" class="form-control" formControlName="cvv" ccCVC>
+      <p *ngIf="cvv.invalid && !cvv.pristine">CVV is required.</p>
     </div>
 
     <div class="form-group">
